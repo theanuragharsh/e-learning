@@ -1,0 +1,32 @@
+server:
+  port: 9999
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/trantor?currentSchema=e-learning
+    username: postgres
+    password: password
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        default_schema: e-learning
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  flyway:
+    enabled: true  # Disable Flyway execution
+    baseline-on-migrate: true # If you have an existing database and start using Flyway for new database changes.
+    table: db_migrations # To customize Flyway migrations tracking table name
+    schemas: e-learning  # Change to your desired schema name
+    url: jdbc:postgresql://localhost:5432/trantor?currentSchema=e-learning
+    user: postgres
+    password: password
+    locations: classpath:db/migration/{vendor} # Locations of the SQL migrations
+    #placeholders:    # Placeholders (optional)
+    #  placeholderName: placeholderValue
