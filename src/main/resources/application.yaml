@@ -10,7 +10,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create-drop
     show-sql: true
     properties:
       hibernate:
@@ -20,7 +20,7 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
   flyway:
-    enabled: true  # Disable Flyway execution
+    enabled: false  # Disable Flyway execution
     baseline-on-migrate: true # If you have an existing database and start using Flyway for new database changes.
     table: db_migrations # To customize Flyway migrations tracking table name
     schemas: e-learning  # Change to your desired schema name
